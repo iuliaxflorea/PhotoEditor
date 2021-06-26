@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         drawable = getResources().getDrawable(R.drawable.image);
         imageView.setImageDrawable(drawable);
 
-        btPick.setOnClickListener(new View.OnClickListener() { //eveniment ce se declanseaza la apasarea butonului
+        btPick.setOnClickListener(new View.OnClickListener() {   //eveniment ce se declanseaza la apasarea butonului
             @Override
             public void onClick(View v) {
-                //Create method la click pe butom cere permisiunea de a accesa galeria
+                //Create method - la click pe butom cere permisiunea de a accesa galeria
                 checkPermission();
             }
         });
@@ -130,9 +130,14 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra(DsPhotoEditorConstants.DS_MAIN_BACKGROUND_COLOR,
                             Color.parseColor("#FFFFFF"));
                     //Hide tools
+                    //Selectez functiile pe care nu doresc sa le afisez
                     intent.putExtra(DsPhotoEditorConstants.DS_PHOTO_EDITOR_TOOLS_TO_HIDE,
-                            new int[]{DsPhotoEditorActivity.TOOL_WARMTH,
-                            DsPhotoEditorActivity.TOOL_PIXELATE});
+                            new int[]{
+                            DsPhotoEditorActivity.TOOL_PIXELATE, DsPhotoEditorActivity.TOOL_CROP,
+                            DsPhotoEditorActivity.TOOL_FRAME, DsPhotoEditorActivity.TOOL_DRAW,
+                            DsPhotoEditorActivity.TOOL_STICKER, DsPhotoEditorActivity.TOOL_TEXT,
+                            DsPhotoEditorActivity.TOOL_ROUND, DsPhotoEditorActivity.TOOL_ORIENTATION,
+                            DsPhotoEditorActivity.TOOL_SHARPNESS});
                     //Start activity for result
                     startActivityForResult(intent,101);
                     break;
